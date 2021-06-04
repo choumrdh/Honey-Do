@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TodoForm from "./ToForm";
+import TodoForm from "./TodoForm";
 import Todo from "./Todo";
 
 const TodoList = () => {
@@ -12,13 +12,21 @@ const TodoList = () => {
     const newTodos = [todo, ...todos];
 
     setTodos(newTodos);
-    // console.log(...todos)
+    console.log(...todos)
   };
-  
+
+  const updateTodo =(todoId, newValue)=>{
+    if (!newValue.text || /^\s*$/.test(newValue.text)) {
+        return;
+      }
+      setTodos(prev => prev.map(item=>(item.id === todoId ? newValue: item)));
+  };
+
   const removeTodo= id =>{
       const removeArr = [...todos].filter(todo=>todo.id !== id)
       removeTodo(removeArr)
-  }
+  };
+
   const completeTodo = (id) => {
     let updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
@@ -33,7 +41,7 @@ const TodoList = () => {
     <div>
       <h1>Need to get done</h1>
       <TodoForm onSubmit={addTodo} />
-      <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo}/>
+      <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/>
     </div>
   );
 };
