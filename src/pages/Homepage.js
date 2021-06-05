@@ -32,11 +32,13 @@ const HomePage = () => {
         </AppBar>
 
         <Container>
-          <Grid>
-            <Memo container item xs={12} md={4} lg={3} />
-          </Grid>
-          <Grid item xs={12} md={8} lg={9}>
-            <TodoList />
+          <Grid container direction="row" justify="center" alignItems="center">
+            <Grid  xs={12} md={4} lg={3} spacing={1}>
+              <Memo />
+            </Grid>
+            <Grid  xs={12} md={8} lg={9} spacing={1}>
+              <TodoList/>
+            </Grid>
           </Grid>
         </Container>
       </section>
