@@ -19,7 +19,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   if (edit.id) {
     return <TodoForm edit={edit} onSubmit={submitUpdate} />;
   }
-  return todos.map((todo, index) => {
+  return todos.map((todo, index) => (
     <div
       className={todo.isComplete ? "todo-row complete" : "todo-row"}
       key={index}
@@ -37,8 +37,8 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
           className="edit-icon"
         />
       </div>
-    </div>;
-  });
+    </div>
+  ));
 };
 
 export default Todo;

@@ -14,6 +14,7 @@ import "../App.css";
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
+    padding:theme.spacing(2)
   },
 }));
 const HomePage = () => {
@@ -33,10 +34,10 @@ const HomePage = () => {
 
         <Container>
           <Grid container direction="row" justify="center" alignItems="center">
-            <Grid  xs={12} md={4} lg={3} spacing={1}>
+            <Grid  xs={12} md={4} lg={4} spacing={2}>
               <Memo />
             </Grid>
-            <Grid  xs={12} md={8} lg={9} spacing={1}>
+            <Grid  xs={12} md={8} lg={8} spacing={2}>
               <TodoList/>
             </Grid>
           </Grid>

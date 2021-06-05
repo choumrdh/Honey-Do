@@ -69,6 +69,7 @@ export default function SignIn() {
             autoComplete="honeyDo@gmail.com"
             // autoFocus
             // placeholder="honeyDo@gmail.com"
+            value="roommatebuddy@test.com"
           />
           <TextField
             variant="outlined"
@@ -79,7 +80,8 @@ export default function SignIn() {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
+            // autoComplete="current-password"
+            value="password"
           />
      
           <Button
