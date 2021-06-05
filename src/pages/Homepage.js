@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     padding:theme.spacing(2)
   },
 }));
-const HomePage = () => {
+const HomePage = ({todos, setTodos, firstname}) => {
   const classes = useStyles();
 
   return (
@@ -34,6 +34,9 @@ const HomePage = () => {
               RoomBud
             </Typography>
             <Button color="inherit"><a href="/account">Account</a></Button>
+            <Typography variant="h6" color="inherit" noWrap>
+              {firstname}
+            </Typography>
           </Toolbar>
         </AppBar>
 
@@ -43,7 +46,7 @@ const HomePage = () => {
               <Memo />
             </Grid>
             <Grid  xs={12} md={8} lg={8} spacing={2}>
-              <TodoList/>
+              <TodoList todos={todos} setTodos={setTodos}/>
             </Grid>
           </Grid>
         </Container>

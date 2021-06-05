@@ -56,8 +56,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Account() {
+export default function Account({firstname, setFirstname, lastname, setLastname}) {
   const accountStorage = window.localStorage;
+  console.log(firstname, lastname)
 
   const classes = useStyles();
   const [values, setValues] = React.useState({
@@ -68,8 +69,7 @@ export default function Account() {
     showPassword: false,
   });
 
-  const [firstname, setFirstname] = useState(accountStorage.getItem('firstName') || 'Mickey');
-  const [lastname, setLastname] = useState(accountStorage.getItem('lastName') || 'Chou');
+  
 
   const updateBtn =()=>{
     accountStorage.setItem("firstName", firstname);

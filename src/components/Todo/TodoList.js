@@ -2,15 +2,11 @@ import React, { useState, useEffect } from "react";
 import TodoForm from "./TodoForm";
 import Todo from "./Todo";
 
-const TodoList = () => {
+const TodoList = ({todos,setTodos}) => {
   const todoStorage = window.localStorage;
   const savedTodoList = todoStorage.getItem('todos');
   console.log(savedTodoList);
-  const [todos, setTodos] = useState(
-    savedTodoList
-    ? JSON.parse(savedTodoList)
-    : []
-  );
+  
 
   useEffect(() => {
     todoStorage.setItem('todos', JSON.stringify(todos));

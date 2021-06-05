@@ -4,6 +4,7 @@ import { RiCloseCircleLine } from "react-icons/ri";
 import { BiEdit } from "react-icons/bi"
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
+    console.log(todos)
   const [edit, setEdit] = useState({
     id: null,
     value: "",
