@@ -1,13 +1,19 @@
 
 import './App.css';
-import TodoList from './components/Todo/TodoList';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Login from "./components/Login/Login"
+import HomePage from "./pages/Homepage"
 
 
 function App() {
   return (
-    <div className="todo-app">
-      <TodoList/>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Login}/>
+        <Route exact path="/home" component={HomePage}/>
+      </Switch>
+    </Router>
   );
 }
 
