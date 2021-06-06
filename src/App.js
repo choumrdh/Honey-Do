@@ -16,7 +16,11 @@ function App() {
   );
   const savedTodoList = storage.getItem('todos')
   const [todos, setTodos] = useState(savedTodoList ? JSON.parse(savedTodoList) : []);
-  console.log('todo:app', todos);
+  // console.log('todo:app', todos);
+
+  const savedMemo = storage.getItem("memo");
+  const [memo, setMemo] = useState(savedMemo? JSON.parse(savedMemo):"");
+  
   return (
     <Router>
       <Switch>

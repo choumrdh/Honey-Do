@@ -1,7 +1,7 @@
 import React from "react";
 import TodoList from "../components/Todo/TodoList";
 import Memo from "../components/Memo/Memo";
-import Navbar from "../components/Navbar/Navbar"
+import Navbar from "../components/Navbar/Navbar";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,24 +13,24 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     display: "flex",
-    padding:theme.spacing(2)
+    padding: theme.spacing(2),
   },
 }));
-const HomePage = ({todos, setTodos, firstname}) => {
+const HomePage = ({ todos, setTodos, firstname }) => {
   const classes = useStyles();
 
   return (
     <>
       <section className={classes.root}>
-        <Navbar firstname={firstname}/>
-        
+        <Navbar firstname={firstname} />
+
         <Container>
-          <Grid container direction="row" justify="center" alignItems="center">
-            <Grid  xs={12} md={4} lg={4} spacing={2}>
+          <Grid direction="row" justify="center" alignItems="center">
+            <Grid xs={12} md={4} lg={4} spacing={2}>
               <Memo />
             </Grid>
-            <Grid  xs={12} md={8} lg={8} spacing={2}>
-              <TodoList todos={todos} setTodos={setTodos}/>
+            <Grid xs={12} md={8} lg={8} spacing={2}>
+              <TodoList todos={todos} setTodos={setTodos} />
             </Grid>
           </Grid>
         </Container>

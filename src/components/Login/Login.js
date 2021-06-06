@@ -15,7 +15,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="">
+      <Link color="inherit" href="/">
         RoomBud
       </Link>{' '}
       {new Date().getFullYear()}
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%', 
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -54,7 +54,7 @@ export default function SignIn() {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5" className="signIn">
+        <Typography component="h1" variant="h5">
           Sign in
         </Typography>
         <form className={classes.form} noValidate>
