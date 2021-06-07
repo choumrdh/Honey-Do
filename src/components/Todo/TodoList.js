@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TodoForm from "./TodoForm";
 import Todo from "./Todo";
+import "./Todo.css";
 
 const TodoList = ({todos,setTodos}) => {
   const todoStorage = window.localStorage;
@@ -45,8 +46,8 @@ const TodoList = ({todos,setTodos}) => {
   };
 
   return (
-    <div id="hooneyDo"> 
-      <h2>Need to get done</h2>
+    <div > 
+      <h2>Roommate Todo List</h2>
       <TodoForm onSubmit={addTodo} />
       <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/>
     </div>

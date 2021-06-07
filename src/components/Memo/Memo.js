@@ -5,6 +5,10 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import Input from "@material-ui/core/Input";
+import AddCircleIcon from '@material-ui/icons/AddCircle'
+import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -22,12 +26,20 @@ const useStyles = makeStyles({
   },
 });
 
-const Memo = () => {
+const Memo = ({ memo, setMemo }) => {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-
+ 
+  const handleChange = (e) => {
+    setMemo(e.target.value);
+  };
+  const handleSubmitMemo =()=>{
+      console.log("added")
+  }
+  const handleDeleteMemo =()=>{
+    console.log("delete")
+  }
   return (
-    <Card className={classes.root} variant="outlined">
+    <Container className={classes.root} variant="outlined">
       <CardContent>
         <Typography
           className={classes.title}
@@ -36,12 +48,18 @@ const Memo = () => {
         >
           Memo
         </Typography>
-        
+        <Input
+          placeholder="Input Memo"
+          value={memo}
+          onChange={handleChange}
+          name="text"
+        />
       </CardContent>
       <CardActions>
-        <Button size="small">Add Memo</Button>
+        <Button size="small" onClick={handleSubmitMemo}><AddCircleIcon/>Memo</Button>
+        <Button size="small" onClick={handleDeleteMemo}><HighlightOffIcon/>Delete Memo</Button>
       </CardActions>
-    </Card>
+    </Container>
   );
 };
 

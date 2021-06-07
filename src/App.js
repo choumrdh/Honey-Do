@@ -28,7 +28,7 @@ function App() {
         <Route
           exact
           path="/home"
-          render={() => <HomePage todos={todos} setTodos={setTodos} firstname={firstname}/>}
+          render={() => <HomePage todos={todos} setTodos={setTodos} firstname={firstname} memo={memo} setMemo={setMemo}/>}
         />
         <Route
           exact
