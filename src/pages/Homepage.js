@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
 }));
-const HomePage = ({ todos, setTodos, firstname, memo, setMemo}) => {
+const HomePage = ({ todos, setTodos, firstname, memo, setMemo }) => {
   const classes = useStyles();
 
   return (
@@ -24,14 +24,13 @@ const HomePage = ({ todos, setTodos, firstname, memo, setMemo}) => {
       <section className={classes.root}>
         <Navbar firstname={firstname} />
 
-        <Container >
-          <Grid direction="row" justify="center" alignItems="center">
-            <Grid xs={12} sm ={4} md={4} lg={2} spacing={2}>
-              <Memo memo={memo} setMemo={setMemo}/>
-            </Grid>
-            
-            <Grid xs={12} sm={8} md={8} lg={10} spacing={2}>
+        <Container className="todo-app">
+          <Grid container direction="row" justify="center" alignItems="center">
+            <Grid xs={12} sm={8} md={8} lg={8} spacing={2}>
               <TodoList todos={todos} setTodos={setTodos} />
+            </Grid>
+            <Grid xs={12} sm={4} md={4} lg={4} spacing={2}>
+              <Memo memo={memo} setMemo={setMemo} />
             </Grid>
           </Grid>
         </Container>

@@ -1,7 +1,18 @@
 /* .todo-form {
   margin-bottom: 32px;
 } */
-
+.todo-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 520px;
+  min-height: 600px;
+  /* background: #161a2b; */
+  text-align: center;
+  margin: 128px auto;
+  border-radius: 10px;
+  padding-bottom: 32px;
+}
 .todo-input {
     padding: 14px 32px 14px 16px;
     border-radius: 4px 0 0 4px;

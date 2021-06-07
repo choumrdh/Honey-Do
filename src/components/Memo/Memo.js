@@ -1,14 +1,14 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Input from "@material-ui/core/Input";
-import AddCircleIcon from '@material-ui/icons/AddCircle'
-import HighlightOffIcon from '@material-ui/icons/HighlightOff'
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -28,16 +28,21 @@ const useStyles = makeStyles({
 
 const Memo = ({ memo, setMemo }) => {
   const classes = useStyles();
- 
+
   const handleChange = (e) => {
     setMemo(e.target.value);
   };
-  const handleSubmitMemo =()=>{
-      console.log("added")
-  }
-  const handleDeleteMemo =()=>{
-    console.log("delete")
-  }
+  const handleSubmitMemo = (memo) => {
+    console.log("added");
+    if (!memo.text || /^\s*$/.test(memo.text)) {
+      return;
+    }
+    const newMemo = [memo];
+    setMemo(newMemo);
+  };
+  const handleDeleteMemo = () => {
+    console.log("delete");
+  };
   return (
     <Container className={classes.root} variant="outlined">
       <CardContent>
@@ -49,6 +54,7 @@ const Memo = ({ memo, setMemo }) => {
           Memo
         </Typography>
         <Input
+          fullWidth
           placeholder="Input Memo"
           value={memo}
           onChange={handleChange}
@@ -56,8 +62,14 @@ const Memo = ({ memo, setMemo }) => {
         />
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={handleSubmitMemo}><AddCircleIcon/>Memo</Button>
-        <Button size="small" onClick={handleDeleteMemo}><HighlightOffIcon/>Delete Memo</Button>
+        <Button size="small" onClick={handleSubmitMemo}>
+          <AddCircleIcon />
+          Memo
+        </Button>
+        <Button size="small" onClick={handleDeleteMemo}>
+          <HighlightOffIcon />
+          Delete Memo
+        </Button>
       </CardActions>
     </Container>
   );

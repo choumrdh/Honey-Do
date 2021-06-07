@@ -3,14 +3,13 @@ import TodoForm from "./TodoForm";
 import Todo from "./Todo";
 import "./Todo.css";
 
-const TodoList = ({todos,setTodos}) => {
+const TodoList = ({ todos, setTodos }) => {
   const todoStorage = window.localStorage;
-  const savedTodoList = todoStorage.getItem('todos');
-  console.log(savedTodoList);
-  
+  // const savedTodoList = todoStorage.getItem("todos");
+  // console.log(savedTodoList);
 
   useEffect(() => {
-    todoStorage.setItem('todos', JSON.stringify(todos));
+    todoStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
   const addTodo = (todo) => {
@@ -23,16 +22,18 @@ const TodoList = ({todos,setTodos}) => {
     // console.log(...todos)
   };
 
-  const updateTodo =(todoId, newValue)=>{
+  const updateTodo = (todoId, newValue) => {
     if (!newValue.text || /^\s*$/.test(newValue.text)) {
-        return;
-      }
-      setTodos(prev => prev.map(item=>(item.id === todoId ? newValue: item)));
+      return;
+    }
+    setTodos((prev) =>
+      prev.map((item) => (item.id === todoId ? newValue : item))
+    );
   };
 
-  const removeTodo= id =>{
-      const removeArr = [...todos].filter(todo=>todo.id !== id);
-      setTodos(removeArr);
+  const removeTodo = (id) => {
+    const removeArr = [...todos].filter((todo) => todo.id !== id);
+    setTodos(removeArr);
   };
 
   const completeTodo = (id) => {
@@ -46,10 +47,15 @@ const TodoList = ({todos,setTodos}) => {
   };
 
   return (
-    <div > 
+    <div>
       <h2>Roommate Todo List</h2>
       <TodoForm onSubmit={addTodo} />
-      <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/>
+      <Todo
+        todos={todos}
+        completeTodo={completeTodo}
+        removeTodo={removeTodo}
+        updateTodo={updateTodo}
+      />
     </div>
   );
 };
