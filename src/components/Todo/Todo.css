@@ -14,11 +14,11 @@
   padding-bottom: 32px;
 }
 .todo-input {
-    padding: 14px 32px 14px 16px;
+    /* padding: 14px 32px 14px 16px; */
     border-radius: 4px 0 0 4px;
     border: 2px solid #5d0cff;
     outline: none;
-    width: 320px;
+    width: 250px;
     background: transparent;
     display: flex;
     align-items: center;
@@ -54,7 +54,7 @@
       rgba(20, 159, 255, 1) 0%,
       rgba(17, 122, 255, 1) 100%
     );
-    padding: 16px 22px;
+    /* padding: 16px 22px; */
   }
   
   .todo-container {
