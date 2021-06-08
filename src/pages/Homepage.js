@@ -1,6 +1,6 @@
 import React from "react";
 import TodoList from "../components/Todo/TodoList";
-import Memo from "../components/Memo/Memo";
+// import Memo from "../components/Memo/Memo";
 import Navbar from "../components/Navbar/Navbar";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
