@@ -1,5 +1,4 @@
 import React from "react";
-// import MemoInput from "./MemoInput";
 import { makeStyles } from "@material-ui/core/styles";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -35,11 +34,10 @@ const Memo = ({ memo, setMemo }) => {
     setMemo(e.target.value);
   };
   const handleSubmitMemo = (memo) => {
-    console.log("added", memo);
-
     if (!memo.text || /^\s*$/.test(memo.text)) {
       return;
     }
+    
   };
   const handleDeleteMemo = () => {
     console.log("delete");
@@ -56,7 +54,6 @@ const Memo = ({ memo, setMemo }) => {
         >
           Memo
         </Typography>
-        {/* <MemoInput memo={memo}/> */}
         <Input
           fullWidth
           placeholder="Input Memo"
@@ -65,6 +62,9 @@ const Memo = ({ memo, setMemo }) => {
           name="text"
         />
       </CardContent>
+      <Typography>
+        {memo}
+      </Typography>
       <CardActions>
         <Button size="small" onClick={handleSubmitMemo}>
           <AddCircleIcon />
