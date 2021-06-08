@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 const HomePage = ({ todos, setTodos, firstname, memo, setMemo }) => {
   const classes = useStyles();
-
+  
+ 
   return (
     <>
       <section className={classes.root}>
@@ -27,6 +28,7 @@ const HomePage = ({ todos, setTodos, firstname, memo, setMemo }) => {
   
         <Container className="todo-app">
           <Grid container direction="row" justify="center" alignItems="center">
+            
             <Grid xs={12} sm={8} md={8} lg={8} spacing={2}>
               <TodoList todos={todos} setTodos={setTodos} />
             </Grid>
