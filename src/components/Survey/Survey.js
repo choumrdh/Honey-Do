@@ -12,7 +12,7 @@ import {
   FormControlLabel,
   Checkbox,
   MenuItem,
-  Button
+  Button,
 } from "@material-ui/core";
 
 const Survery = () => {
@@ -54,9 +54,14 @@ const Survery = () => {
     });
     console.log("picked", checkOption);
   };
+
+  const handleSubmit = () => {
+    console.log("I am clicked");
+  };
+
   return (
     <>
-      <form className={classes.form}>
+      <form className={classes.form} container>
         <Typography variant="h6" gutterBottom>
           Survey
         </Typography>
@@ -105,9 +110,8 @@ const Survery = () => {
                 value={gender}
               >
                 <MenuItem value="female">Female</MenuItem>
-                <MenuItem value="Male">Male</MenuItem>
-                <MenuItem value="Other">Other</MenuItem>
-                <MenuItem value="NotAnswer">Prefer Not to Answer</MenuItem>
+                <MenuItem value="male">Male</MenuItem>
+                <MenuItem value="notAnswer">Prefer Not to Answer</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -164,17 +168,35 @@ const Survery = () => {
               </FormGroup>
             </FormControl>
           </Grid>
+          <Grid item xs={12} sm={12}>
+          <TextField
+          required
+          id="note"
+          label="Notes"
+          multiline
+          fullWidth
+          rows={5}
+          placeholder="Please enter note here"
+          // defaultValue="Please enter note here"
+          variant="outlined"
+        />
+          </Grid>
         </Grid>
+        <br></br>
         <Grid>
-          <Button type="submit" variant="contained" color="primary">
-          Submit
-        </Button>
-        
-        <Button type="button" variant="contained" color="secondary">
-          Clear
-        </Button>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
+
+          <Button type="button" variant="contained" color="secondary">
+            Clear
+          </Button>
         </Grid>
-        
       </form>
     </>
   );

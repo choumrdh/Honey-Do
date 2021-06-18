@@ -1,0 +1,20 @@
+[
+    {
+        "id":1,
+        "firstName":"Mickey",
+        "lastName":"Chou",
+        "email":"mickey@test.com",
+        "gender":"male",
+        "favoriteIceCream":"vanilla",
+        "note":"Hi I am Mickey the cat"
+    },
+    {
+        "id":2,
+        "firstName":"Amy",
+        "lastName":"Fan",
+        "email":"amy@test.com",
+        "gender":"female",
+        "favoriteIceCream":"strawberry",
+        "note":"Hi I am Amy"
+    }
+]
