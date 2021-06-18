@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
-import Survery from "../components/Survey/Survey"
+import Survery from "../components/Survey/SurveyForm"
 
 
 import "../App.css";
