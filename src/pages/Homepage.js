@@ -1,6 +1,5 @@
 import React from "react";
-import TodoList from "../components/Todo/TodoList";
-// import Memo from "../components/Memo/Memo";
+// import TodoList from "../components/Todo/TodoList";
 import Navbar from "../components/Navbar/Navbar";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -8,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
+import Survery from "../components/Survey/Survey"
 
 
 import "../App.css";
@@ -44,12 +44,10 @@ const HomePage = ({ todos, setTodos, firstname}) => {
         <Container className="todo-app">
           <Grid container direction="row" justify="center" alignItems="center">
             
-            <Grid xs={12} sm={8} md={8} lg={8} spacing={2}>
+            {/* <Grid xs={12} sm={8} md={8} lg={8} spacing={2}>
               <TodoList todos={todos} setTodos={setTodos} />
-            </Grid>
-            {/* <Grid xs={12} sm={4} md={4} lg={4} spacing={2}>
-              <Memo memo={memo} setMemo={setMemo} />
             </Grid> */}
+            <Survery/>
           </Grid>
         </Container>
         
