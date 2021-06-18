@@ -4,9 +4,6 @@ import Navbar from "../components/Navbar/Navbar";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import Link from '@material-ui/core/Link';
 import Survery from "../components/Survey/SurveyForm"
 
 
@@ -20,18 +17,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
 }));
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="/">
-        RoomBud
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
 const HomePage = ({ todos, setTodos, firstname}) => {
   const classes = useStyles();
   
@@ -52,9 +38,6 @@ const HomePage = ({ todos, setTodos, firstname}) => {
         </Container>
         
       </section>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </>
   );
 };

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
+import Copyright from "./components/Copyright/Copyright";
+import Box from "@material-ui/core/Box"; 
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
@@ -18,17 +20,17 @@ function App() {
   const [todos, setTodos] = useState(savedTodoList ? JSON.parse(savedTodoList) : []);
   // console.log('todo:app', todos);
 
-  const savedMemo = storage.getItem("memo");
-  const [memo, setMemo] = useState(savedMemo? JSON.parse(savedMemo):"");
   
   return (
+    <>
     <Router>
       <Switch>
         <Route exact path="/" component={Login} />
+        {/* <Route exact path="/survey" render={()=><} */}
         <Route
           exact
           path="/home"
-          render={() => <HomePage todos={todos} setTodos={setTodos} firstname={firstname} memo={memo} setMemo={setMemo}/>}
+          render={() => <HomePage todos={todos} setTodos={setTodos} firstname={firstname}/>}
         />
         <Route
           exact
@@ -44,6 +46,10 @@ function App() {
         />
       </Switch>
     </Router>
+       <Box mt={8}>
+       <Copyright />
+     </Box>
+     </>
   );
 }
 

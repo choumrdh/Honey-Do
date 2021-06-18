@@ -4,8 +4,6 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
-import Box from "@material-ui/core/Box";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import HomeIcon from '@material-ui/icons/Home';
 import Typography from "@material-ui/core/Typography";
@@ -13,19 +11,6 @@ import Container from "@material-ui/core/Container";
 import clsx from "clsx";
 import FormControl from "@material-ui/core/FormControl";
 
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="/">
-        RoomBud
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -126,9 +111,6 @@ export default function Account({
           </a>
         </Button>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }
