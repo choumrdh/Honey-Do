@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import HomePage from "./pages/Homepage";
 import AccountPage from "./pages/Accountpage";
+import viewSurveyPage from "./pages/viewSurveyPage"
 
 function App() {
   const storage = window.localStorage;
@@ -26,7 +27,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Login} />
-        {/* <Route exact path="/survey" render={()=><} */}
+        <Route exact path="/survey" render={()=><viewSurveyPage/>}/>
         <Route
           exact
           path="/home"

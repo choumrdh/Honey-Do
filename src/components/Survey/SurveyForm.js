@@ -114,7 +114,7 @@ const Survery = () => {
               }}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12}>
             <TextField
               margin="normal"
               required
@@ -129,7 +129,7 @@ const Survery = () => {
               }}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl className={classes.formControl}>
               <InputLabel>Gender</InputLabel>
               <Select
@@ -148,7 +148,7 @@ const Survery = () => {
           <Grid item xs={12}>
             <FormControl className={classes.formControl}>
               <FormLabel component="legend">
-                Pick you favorite ice cream flavor
+                Pick one ice cream flavor
               </FormLabel>
               <FormGroup>
                 <FormControlLabel
