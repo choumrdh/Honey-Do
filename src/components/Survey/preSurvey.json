@@ -6,7 +6,7 @@
         "email":"mickey@test.com",
         "gender":"male",
         "favoriteIceCream":"vanilla",
-        "note":"Hi I am Mickey the cat"
+        "notes":"Hi I am Mickey the cat"
     },
     {
         "id":2,
@@ -15,6 +15,6 @@
         "email":"amy@test.com",
         "gender":"female",
         "favoriteIceCream":"strawberry",
-        "note":"Hi I am Amy"
+        "notes":"Hi I am Amy"
     }
 ]

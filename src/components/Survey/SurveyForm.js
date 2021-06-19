@@ -33,32 +33,48 @@ const Survery = () => {
     },
   }));
   const classes = useStyles();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("")
 
   const [gender, setGender] = useState("");
+  const [notes, setNotes] = useState("")
+
   const handleSelect = (event) => {
     setGender(event.target.value);
     console.log("selected", gender);
   };
-  const [checkOption, setChecOption] = useState({
-    checkedA: false,
-    checkedB: false,
-    checkedC: false,
-    checkedD: false,
+  const [checkOption, setCheckOption] = useState({
+    vanilla: false,
+    chocolate: false,
+    strawberry: false,
+    cookiencream: false,
   });
   // const error = [checkOption].filter((v) => v).length !== 1;
 
   const handleChange = (event) => {
-    setChecOption({
+    setCheckOption({
       ...checkOption,
       [event.target.name]: event.target.checked,
     });
     console.log("picked", checkOption);
   };
 
-  const handleSubmit = () => {
-    console.log("I am clicked");
+  const handleSubmit = (e, index) => {
+    e.preventDefault();
+    let surveryInput = {
+      id:index+3,
+      firstName: firstName,
+      lastName:lastName,
+      email:email,
+      gender:gender,
+      notes:notes
+    }
+    console.log(surveryInput)
   };
-
+  const clearForm =()=>{
+    console.log("I am reset")
+  }
   return (
     <>
       <form className={classes.form} container>
@@ -75,6 +91,9 @@ const Survery = () => {
               label="First name"
               fullWidth
               autoComplete="given-name"
+              onChange={(event) => {
+                setFirstName(event.target.value);
+              }}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -85,6 +104,9 @@ const Survery = () => {
               label="Last name"
               fullWidth
               autoComplete="family-name"
+              onChange={(event) => {
+                setLastName(event.target.value);
+              }}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -97,6 +119,9 @@ const Survery = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -124,9 +149,9 @@ const Survery = () => {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={checkOption.checkedA}
+                      checked={checkOption.vanilla}
                       onChange={handleChange}
-                      name="checkedA"
+                      name="vanilla"
                       color="primary"
                     />
                   }
@@ -135,9 +160,9 @@ const Survery = () => {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={checkOption.checkedB}
+                      checked={checkOption.chocolate}
                       onChange={handleChange}
-                      name="checkedB"
+                      name="chocolate"
                       color="primary"
                     />
                   }
@@ -146,9 +171,9 @@ const Survery = () => {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={checkOption.checkedC}
+                      checked={checkOption.strawberry}
                       onChange={handleChange}
-                      name="checkedC"
+                      name="strawberry"
                       color="primary"
                     />
                   }
@@ -157,9 +182,9 @@ const Survery = () => {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={checkOption.checkedD}
+                      checked={checkOption.cookiencream}
                       onChange={handleChange}
-                      name="checkedD"
+                      name="cookiencream"
                       color="primary"
                     />
                   }
@@ -179,6 +204,9 @@ const Survery = () => {
           placeholder="Please enter note here"
           // defaultValue="Please enter note here"
           variant="outlined"
+          onChange={(event) => {
+            setNotes(event.target.value);
+          }}
         />
           </Grid>
         </Grid>
