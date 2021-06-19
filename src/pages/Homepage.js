@@ -4,8 +4,9 @@ import Navbar from "../components/Navbar/Navbar";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import Survery from "../components/Survey/SurveyForm"
-
+// import Survery from "../components/Survey/SurveyForm"
+import SurveryForm2 from "../components/Survey/surveyFormv2";
+import preMadeSurvey from "../components/Survey/pre-madeSurvey.json"
 
 import "../App.css";
 const useStyles = makeStyles((theme) => ({
@@ -33,7 +34,7 @@ const HomePage = ({ todos, setTodos, firstname}) => {
             {/* <Grid xs={12} sm={8} md={8} lg={8} spacing={2}>
               <TodoList todos={todos} setTodos={setTodos} />
             </Grid> */}
-            <Survery/>
+            <SurveryForm2 surveyId={1}/>
           </Grid>
         </Container>
         

@@ -3,8 +3,9 @@ import Navbar from "../components/Navbar/Navbar";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import Survey from "../components/Survey/SurveyForm";
+// import Survey from "../components/Survey/SurveyForm";
 import preSurvey from "../components/Survey/preSurvey.json"
+import SurveryForm2 from "../components/Survey/surveyFormv2"
 
 import "../App.css";
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +28,8 @@ const SurveyPage = ({ firstname }) => {
 
         <Container className="todo-app">
           <Grid container direction="row" justify="center" alignItems="center">
-            <Survey />
+            {/* <Survey /> */}
+            <SurveryForm2/>
           </Grid>
         </Container>
       </section>

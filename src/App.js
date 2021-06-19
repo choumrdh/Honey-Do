@@ -7,7 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import HomePage from "./pages/Homepage";
 import AccountPage from "./pages/Accountpage";
-import viewSurveyPage from "./pages/viewSurveyPage"
+import viewSurveyPage from "./pages/viewSurveyPage";
+import defaultSurvey from "./components/Survey/pre-madeSurvey.json";
 
 function App() {
   const storage = window.localStorage;
@@ -20,6 +21,8 @@ function App() {
   const savedTodoList = storage.getItem('todos')
   const [todos, setTodos] = useState(savedTodoList ? JSON.parse(savedTodoList) : []);
   // console.log('todo:app', todos);
+
+  storage.setItem("default", JSON.stringify(defaultSurvey));
 
   
   return (
