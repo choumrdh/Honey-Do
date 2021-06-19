@@ -16,6 +16,7 @@ import {
 } from "@material-ui/core";
 
 const Survery = () => {
+  const surveyStorage = window.localStorage;
   const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
@@ -35,10 +36,11 @@ const Survery = () => {
   const classes = useStyles();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("");
 
   const [gender, setGender] = useState("");
-  const [notes, setNotes] = useState("")
+  const [favorite, setFavorite] = useState("");
+  const [notes, setNotes] = useState("");
 
   const handleSelect = (event) => {
     setGender(event.target.value);
@@ -57,24 +59,27 @@ const Survery = () => {
       ...checkOption,
       [event.target.name]: event.target.checked,
     });
+    setFavorite(event.target.name);
     console.log("picked", checkOption);
   };
 
-  const handleSubmit = (e, index) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     let surveryInput = {
-      id:index+3,
+      id: new Date().getTime(),
       firstName: firstName,
-      lastName:lastName,
-      email:email,
-      gender:gender,
-      notes:notes
-    }
-    console.log(surveryInput)
+      lastName: lastName,
+      email: email,
+      gender: gender,
+      favorite: favorite,
+      notes: notes,
+    };
+    console.log(surveryInput);
+    surveyStorage.setItem("surveyInput", JSON.stringify(surveryInput))
   };
-  const clearForm =()=>{
-    console.log("I am reset")
-  }
+  const clearForm = () => {
+    console.log("I am reset");
+  };
   return (
     <>
       <form className={classes.form} container>
@@ -194,20 +199,20 @@ const Survery = () => {
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={12}>
-          <TextField
-          required
-          id="note"
-          label="Notes"
-          multiline
-          fullWidth
-          rows={5}
-          placeholder="Please enter note here"
-          // defaultValue="Please enter note here"
-          variant="outlined"
-          onChange={(event) => {
-            setNotes(event.target.value);
-          }}
-        />
+            <TextField
+              required
+              id="note"
+              label="Notes"
+              multiline
+              fullWidth
+              rows={5}
+              placeholder="Please enter note here"
+              // defaultValue="Please enter note here"
+              variant="outlined"
+              onChange={(event) => {
+                setNotes(event.target.value);
+              }}
+            />
           </Grid>
         </Grid>
         <br></br>
