@@ -24,7 +24,7 @@
       {
         "id": 3,
         "type": "checkbox.single",
-        "label": "flavor",
+        "label": "Pick one for Flavor",
         "value": ["Vanilla", "Chocolate", "Strawberry", "Cookie n Cream"]
       },
       {

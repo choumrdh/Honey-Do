@@ -13,12 +13,12 @@ import {
   Checkbox,
   MenuItem,
   Button,
-  Snackbar
+  Snackbar,
 } from "@material-ui/core";
-import MuiAlert from '@material-ui/lab/Alert';
+import MuiAlert from "@material-ui/lab/Alert";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-const SurveyFormv2 = ({ surveyId }) => {
+const SurveyFormv2 = ({ surveyId, isEditable }) => {
   const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
@@ -35,27 +35,25 @@ const SurveyFormv2 = ({ surveyId }) => {
       alignItems: "center",
     },
   }));
+  const [isEdit, setIsEdit] = useState(isEditable);
+  const [formValue, setFormValue] = useState({});
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
-  //   const { id, title, questions } = survayData;
-  const surveyToRender = JSON.parse(
-    window.localStorage.getItem("default")
-  ).find((survey) => surveyId == survey.id);
+  const allSurveys = JSON.parse(window.localStorage.getItem("default"));
+  const surveyToRender = allSurveys.find((survey) => surveyId == survey.id);
   const { id, title, questions } = surveyToRender;
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
 
-    console.log(result.source.index, result.destination.index);
     const temp = questions[result.source.index];
     questions[result.source.index] = questions[result.destination.index];
     questions[result.destination.index] = temp;
   };
-  const [isEdit, setIsEdit] = useState(false);
-  const [formValue, setFormValue] = useState({});
-  const [open, setOpen] = useState(false);
+
   const textHandler = (event, questionId) => {
     setFormValue({
       ...formValue,
@@ -75,7 +73,8 @@ const SurveyFormv2 = ({ surveyId }) => {
     });
   };
   const submitHandler = () => {
-    const surveyAnswers = JSON.parse(window.localStorage.getItem("surveyAnswer")) || {};
+    const surveyAnswers =
+      JSON.parse(window.localStorage.getItem("surveyAnswer")) || {};
     const currentSurveyAnswers = surveyAnswers[surveyId] || [];
     console.log(surveyAnswers, currentSurveyAnswers);
     currentSurveyAnswers.push(formValue);
@@ -84,12 +83,13 @@ const SurveyFormv2 = ({ surveyId }) => {
     setOpen(true);
   };
   const closeHandle = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
     setOpen(false);
   };
+  console.log(surveyId, surveyToRender);
   return (
     <div>
       {!isEdit && (
@@ -221,156 +221,129 @@ const SurveyFormv2 = ({ surveyId }) => {
             <div>
               <Droppable droppableId="surveyDrop">
                 {(provided, snapshot) => (
-                  <div ref={provided.innerRef}>
-                    {questions.map((question, index) => {
-                      return (
-                        <Draggable
-                          draggableId={`${question.id}`}
-                          key={question.id}
-                          index={index}
-                        >
-                          {(provided, snapshot) => {
-                            switch (question.type) {
-                              case "input":
-                                return (
-                                  <>
-                                    <Grid item xs={12} sm={12}>
-                                      <TextField
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        ref={provided.innerRef}
-                                        key={index}
-                                        required
-                                        id={question.id}
-                                        name={question.label}
-                                        label={question.label}
-                                        fullWidth
-                                        autoComplete="name"
-                                        // onChange={(event) => {
-                                        //   setFirstName(event.target.value);
-                                        // }}
-                                      />
-                                    </Grid>
-                                    <Grid item xs={12} sm={12}>
-                                      <TextField
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        ref={provided.innerRef}
-                                        key={index}
-                                        margin="normal"
-                                        required
-                                        fullWidth
-                                        id="email"
-                                        label="Email Address"
-                                        name="email"
-                                        autoComplete="email"
-                                        autoFocus
-                                        // onChange={(event) => {
-                                        //   setEmail(event.target.value);
-                                        // }}
-                                      />
-                                    </Grid>
-                                  </>
-                                );
-                                break;
-                              case "dropdown":
-                                return (
-                                  <Grid item xs={12} sm={12}>
-                                    <FormControl
-                                      className={classes.formControl}
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {questions.map((question, index) => (
+                      <Draggable
+                        draggableId={`${question.id}`}
+                        key={question.id}
+                        index={index}
+                      >
+                        {(provided, snapshot) => {
+                          switch (question.type) {
+                            case "input":
+                              return (
+                                <Grid item xs={12} sm={12}>
+                                  <TextField
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                    ref={provided.innerRef}
+                                    key={`${index}`}
+                                    key={`${index}`}
+                                    required
+                                    disabled
+                                    id={`${question.id}`}
+                                    name={question.label}
+                                    label={question.label}
+                                    fullWidth
+                                  />
+                                  {console.log(question.label)}
+                                </Grid>
+                              );
+                              break;
+                            case "dropdown":
+                              return (
+                                <Grid item xs={12} sm={12}>
+                                  <FormControl
+                                    className={classes.formControl}
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                    ref={provided.innerRef}
+                                    key={`${index}`}
+                                  >
+                                    <InputLabel>{question.label}</InputLabel>
+                                    <Select
+                                      name={question.label}
+                                      id={question.label}
+                                      autoWidth
+                                      disabled
                                     >
-                                      <InputLabel>Gender</InputLabel>
-                                      <Select
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        ref={provided.innerRef}
-                                        key={index}
-                                        name={question.label}
-                                        id={question.label}
-                                        autoWidth
-                                        // onChange={handleSelect}
-                                        // value={gender}
-                                      >
-                                        {question.value.map((option, index) => (
-                                          <MenuItem value={option} key={index}>
-                                            {option}
-                                          </MenuItem>
-                                        ))}
-                                      </Select>
-                                    </FormControl>
-                                  </Grid>
-                                );
-                                break;
-                              case "checkbox":
-                                return (
-                                  <Grid item xs={12}>
-                                    <FormControl
-                                      className={classes.formControl}
-                                    >
-                                      <FormLabel component="legend">
-                                        Pick one ice cream flavor
-                                      </FormLabel>
-                                      <FormGroup
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        ref={provided.innerRef}
-                                        key={index}
-                                      >
-                                        {question.value.map((option, index) => (
-                                          <FormControlLabel
-                                            control={
-                                              <Checkbox
-                                                key={index}
-                                                //   checked={checkOption.vanilla}
-                                                //   onChange={handleChange}
-                                                name={option}
-                                                color="primary"
-                                              />
-                                            }
-                                            label={option}
-                                          />
-                                        ))}
-                                      </FormGroup>
-                                    </FormControl>
-                                  </Grid>
-                                );
-                                break;
-                              case "textfield":
-                                return (
-                                  <Grid item xs={12} sm={12}>
-                                    <TextField
-                                      {...provided.draggableProps}
-                                      {...provided.dragHandleProps}
-                                      ref={provided.innerRef}
-                                      key={index}
-                                      required
-                                      id={question.id}
-                                      label={question.label}
-                                      multiline
-                                      fullWidth
-                                      rows={5}
-                                      placeholder="Please enter note here"
-                                      variant="outlined"
-                                      // onChange={(event) => {
-                                      //   setNotes(event.target.value);
-                                      // }}
-                                    />
-                                  </Grid>
-                                );
-                                break;
-                            }
-                          }}
-                        </Draggable>
-                      );
-                    })}
+                                      {question.value.map((option, index) => (
+                                        <MenuItem value={option} key={index}>
+                                          {option}
+                                        </MenuItem>
+                                      ))}
+                                    </Select>
+                                  </FormControl>
+                                </Grid>
+                              );
+                              break;
+                            case "checkbox.single":
+                              return (
+                                <Grid item xs={12}>
+                                  <FormControl
+                                    className={classes.formControl}
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                    ref={provided.innerRef}
+                                    key={`${index}`}
+                                  >
+                                    <FormLabel component="legend">
+                                      {question.label}
+                                    </FormLabel>
+                                    <FormGroup>
+                                      {question.value.map((option, index) => (
+                                        <FormControlLabel
+                                          control={
+                                            <Checkbox
+                                              key={index}
+                                              name={option}
+                                              disabled
+                                              color="primary"
+                                            />
+                                          }
+                                          label={option}
+                                        />
+                                      ))}
+                                    </FormGroup>
+                                  </FormControl>
+                                </Grid>
+                              );
+                              break;
+                            case "textfield":
+                              return (
+                                <Grid item xs={12} sm={12}>
+                                  <TextField
+                                  disabled
+                                    required
+                                    id={question.id}
+                                    label={question.label}
+                                    multiline
+                                    fullWidth
+                                    rows={5}
+                                    placeholder="Please enter note here"
+                                    variant="outlined"
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                    ref={provided.innerRef}
+                                    key={index}
+                                  />
+                                </Grid>
+                              );
+                              break;
+                          }
+                        }}
+                      </Draggable>
+                    ))}
                   </div>
                 )}
               </Droppable>
             </div>
             <Grid>
               <br></br>
-              <Button type="submit" variant="outlined" color="primary">
-                Update
+              <Button type="button" variant="outlined" color="primary" onClick={() => {
+                  window.localStorage.setItem('default', JSON.stringify(allSurveys));
+              }}>
+                <a href="/home">Update</a>
               </Button>
             </Grid>
           </form>

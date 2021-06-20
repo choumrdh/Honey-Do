@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 // import HomePage from "./pages/Homepage";
 import AccountPage from "./pages/Accountpage";
-// import viewSurveyPage from "./pages/viewSurveyPage";
+import EditSurveyPage from "./pages/EditSurveyPage";
 import Homepagev2 from "./pages/Homepagev2";
 import defaultSurvey from "./components/Survey/pre-madeSurvey.json";
 
@@ -23,8 +23,10 @@ function App() {
   const [todos, setTodos] = useState(
     savedTodoList ? JSON.parse(savedTodoList) : []
   );
-  // console.log('todo:app', todos);
-  storage.setItem("default", JSON.stringify(defaultSurvey));
+
+  if(!storage.getItem("default")) {
+    storage.setItem("default", JSON.stringify(defaultSurvey));
+  }
   const getDefault = JSON.parse(storage.getItem("default"));
 
   return (
@@ -32,7 +34,9 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route exact path="/survey" render={() => <viewSurveyPage />} />
+          {/* <Route exact path="/view" render={() => <ViewSurveyPage />} /> */}
+          <Route exact path="/add" render={() => <EditSurveyPage firstname={firstname} isEditable={false} />} />
+          <Route exact path="/edit" render={() => <EditSurveyPage firstname={firstname} isEditable={true} />} />
           {/* <Route
           exact
           path="/home"

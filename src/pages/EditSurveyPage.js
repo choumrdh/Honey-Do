@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SurveyPage = ({ firstname }) => {
+const SurveyPage = ({ firstname, isEditable }) => {
   const classes = useStyles();
 
   return (
@@ -27,8 +27,7 @@ const SurveyPage = ({ firstname }) => {
 
         <Container className="todo-app">
           <Grid container direction="row" justify="center" alignItems="center">
-            {/* <Survey /> */}
-            <SurveryForm2 surveyId={1}/>
+            <SurveryForm2 surveyId={1} isEditable={isEditable}/>
           </Grid>
         </Container>
       </section>
