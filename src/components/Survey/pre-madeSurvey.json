@@ -1,31 +1,38 @@
 [
-    {
-        "id": "1",
-        "title":"ice cream favorite",
-        "questions":[
-            {
-                "id":0,
-                "type":"input",
-                "label":"name",
-                "value": []
-            },{
-                
-                "id":1,
-                "type":"dropdown",
-                "label":"gender",
-                "value":["male","female","prferNotAnswer"]
-            },{
-                "id":2,
-                "type":"checkbox",
-                "label":"flavor",
-                "value":["vanilla", "chocolate", "strawberry", "cookienCream"]
-            },
-            {
-                "id":3,
-                "type":"textfield",
-                "label":"notes",
-                "value":[]
-            }
-        ]
-    }
+  {
+    "id": "1",
+    "title": "What's your favorite ice cream flavor?",
+    "questions": [
+      {
+        "id": 0,
+        "type": "input",
+        "label": "Full-Name",
+        "value": []
+      },
+      {
+        "id": 1,
+        "type": "input",
+        "label": "Email Address",
+        "value": []
+      },
+      {
+        "id": 2,
+        "type": "dropdown",
+        "label": "gender",
+        "value": ["Male", "Female", "Prefer No Answer"]
+      },
+      {
+        "id": 3,
+        "type": "checkbox.single",
+        "label": "flavor",
+        "value": ["Vanilla", "Chocolate", "Strawberry", "Cookie n Cream"]
+      },
+      {
+        "id": 4,
+        "type": "textfield",
+        "label": "Notes",
+        "value": []
+      }
+    ]
+  }
 ]

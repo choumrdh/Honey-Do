@@ -75,7 +75,7 @@ const Survery = () => {
       notes: notes,
     };
     console.log(surveryInput);
-    surveyStorage.setItem("surveyInput", JSON.stringify(surveryInput))
+    surveyStorage.setItem("surveyInput", JSON.stringify(surveryInput));
   };
   const clearForm = () => {
     console.log("I am reset");
@@ -86,8 +86,8 @@ const Survery = () => {
         <Typography variant="h6" gutterBottom>
           Survey
         </Typography>
+        <p>{title}</p>
         <Grid container spacing={3}>
-          <FormControl></FormControl>
           <Grid item xs={12} sm={6}>
             <TextField
               required
