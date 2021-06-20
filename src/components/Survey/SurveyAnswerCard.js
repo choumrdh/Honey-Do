@@ -1,46 +1,45 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
-  CardActions: {
-    display: "flex",
-    justifyContent: "space-around",
-  },
   root: {
+    flexGrow: 1,
     padding: theme.spacing(2),
+    alignItems: "center",
+    maxWidth: 400,
   },
   Card: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(3),
+    borderColor: 'primary.main',
   },
 }));
 
-const SurveyAnswerCard = ({surveyAnswers}) => {
-    console.log("answer card", surveyAnswers)
+const SurveyAnswerCard = ({ surveyAnswers }) => {
+  console.log("answer card", surveyAnswers[0][0]);
   const classes = useStyles();
-  const {id, } = surveyAnswers
+
   return (
     <div className={classes.root}>
-      {/* {surveyAnswers.map((answer) => {
-        
-        return (
-          <Card className={classes.Card}>
-            <CardContent>
-              <Typography>{title}</Typography>
-              <h6>Survey ID: {id}</h6>
-              <Typography>
-
-              </Typography>
-            </CardContent>
-
-            
-          </Card>
-        );
-      })} */}
+      {surveyAnswers.map((answer) => {
+        return <Card className={classes.Card} variant="outlined">
+          <Typography variant="h5" gutterBottom>
+            {answer[0]}
+          </Typography>
+          <Typography variant="h6">{answer[1]}</Typography>
+          <CardContent>
+            <Typography variant="subtitle1">{answer[2]}</Typography>
+            <Typography variant="subtitle1" display="block">
+              {answer[3]}
+            </Typography>
+            <Typography variant="subtitle1" display="block">
+              {answer[4]}
+            </Typography>
+          </CardContent>
+        </Card>;
+      })}
     </div>
   );
 };

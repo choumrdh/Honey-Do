@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
-import {Container, Grid, Card} from "@material-ui/core";
+import { Container, Grid} from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 import SurveyAnswerCard from "../components/Survey/SurveyAnswerCard";
@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ViewSurveyPage = ({firstname, surveyAnswers}) => {
-    console.log("view", surveyAnswers)
+const ViewSurveyPage = ({ firstname, surveyAnswers, match: { params } }) => {
+  const { surveyId } = params;
   const classes = useStyles();
 
   return (
@@ -24,9 +24,9 @@ const ViewSurveyPage = ({firstname, surveyAnswers}) => {
       <section className={classes.root}>
         <Navbar firstname={firstname} />
 
-        <Container >
+        <Container>
           <Grid container direction="row" justify="center" alignItems="center">
-            <SurveyAnswerCard surveyAnswers={surveyAnswers}/>
+            <SurveyAnswerCard surveyId={surveyId} surveyAnswers={surveyAnswers[surveyId]} />
           </Grid>
         </Container>
       </section>

@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SurveyPage = ({ firstname, isEditable }) => {
+const SurveyPage = ({ firstname, isEditable, match:{params}}) => {
+  const {surveyId} =params;
   const classes = useStyles();
 
   return (
@@ -26,7 +27,7 @@ const SurveyPage = ({ firstname, isEditable }) => {
 
         <Container >
           <Grid container direction="row" justify="center" alignItems="center">
-            <SurveryForm2 surveyId={2} isEditable={isEditable}/>
+            <SurveryForm2 surveyId={surveyId} isEditable={isEditable}/>
           </Grid>
         </Container>
       </section>

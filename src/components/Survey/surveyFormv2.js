@@ -106,7 +106,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                       <Grid item xs={12} sm={12}>
                         <TextField
                           required
-                          id={question.id}
+                          id={`${question.id}`}
                           name={question.label}
                           label={question.label}
                           fullWidth
@@ -124,7 +124,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                         <InputLabel>{question.label}</InputLabel>
                         <Select
                           name={question.label}
-                          id={question.label}
+                          id={`${question.id}`}
                           autoWidth
                           onChange={(event) =>
                             selectHandler(event, question.id)
@@ -179,12 +179,12 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                     <Grid item xs={12} sm={12}>
                       <TextField
                         required
-                        id={question.id}
+                        id={`${question.id}`}
                         label={question.label}
                         multiline
                         fullWidth
                         rows={5}
-                        placeholder="Please enter note here"
+
                         variant="outlined"
                         onChange={(event) => textHandler(event, question.id)}
                       />
@@ -242,7 +242,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                                     label={question.label}
                                     fullWidth
                                   />
-                                  {console.log(question.label)}
+          
                                 </Grid>
                               );
                               break;
@@ -316,7 +316,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                                     multiline
                                     fullWidth
                                     rows={5}
-                                    placeholder="Please enter note here"
+                        
                                     variant="outlined"
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}
@@ -347,7 +347,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                   );
                 }}
               >
-                <a href="/home">Update</a>
+                <a href="/home">Update Order</a>
               </Button>
             </Grid>
           </form>

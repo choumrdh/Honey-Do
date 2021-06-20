@@ -36,9 +36,9 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route exact path="/view" render={() => <ViewSurveyPage firstname={firstname} surveyAnswers={surveyAnswers} getDefault={getDefault}/>} />
-          <Route exact path="/add" render={() => <EditSurveyPage firstname={firstname} isEditable={false} />} />
-          <Route exact path="/edit" render={() => <EditSurveyPage firstname={firstname} isEditable={true} />} />
+          <Route  path="/view/:surveyId" render={(props) => <ViewSurveyPage firstname={firstname} surveyAnswers={surveyAnswers} getDefault={getDefault} {...props}/>} />
+          <Route  path="/add/:surveyId" render={(props) => <EditSurveyPage firstname={firstname} isEditable={false} {...props}/>} />
+          <Route  path="/edit/:surveyId" render={(props) => <EditSurveyPage firstname={firstname} isEditable={true} {...props}/>} />
           {/* <Route
           exact
           path="/home"

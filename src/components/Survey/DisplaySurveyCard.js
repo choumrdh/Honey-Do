@@ -23,10 +23,10 @@ const DisplaySurveyCard = ({ surveys }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      {surveys.map((survey) => {
+      {surveys.map((survey, index) => {
         const { id, title } = survey;
         return (
-          <Card className={classes.Card}>
+          <Card className={classes.Card} key={index}>
             <CardContent>
               <Typography>{title}</Typography>
               <h6>Survey ID: {id}</h6>
@@ -34,13 +34,13 @@ const DisplaySurveyCard = ({ surveys }) => {
 
             <CardActions className={classes.CardActions}>
               <Button size="small">
-                <a href="/view">View</a>
+                <a href={`/view/${id}`}>View</a>
               </Button>
               <Button size="small">
-                <a href="/add">Add</a>
+                <a href={`/add/${id}`}>Add</a>
               </Button>
               <Button size="small">
-                <a href="/edit">Edit</a>
+                <a href={`/edit/${id}`}>Edit</a>
               </Button>
             </CardActions>
           </Card>
