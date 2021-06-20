@@ -1,11 +1,10 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import SurveryForm2 from "../components/Survey/surveyFormv2"
+import {Container, Grid, Card} from "@material-ui/core";
 
-import "../App.css";
+import { makeStyles } from "@material-ui/core/styles";
+import SurveyAnswerCard from "../components/Survey/SurveyAnswerCard";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -16,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SurveyPage = ({ firstname, isEditable }) => {
+const ViewSurveyPage = ({firstname, surveyAnswers}) => {
+    console.log("view", surveyAnswers)
   const classes = useStyles();
 
   return (
@@ -26,7 +26,7 @@ const SurveyPage = ({ firstname, isEditable }) => {
 
         <Container >
           <Grid container direction="row" justify="center" alignItems="center">
-            <SurveryForm2 surveyId={2} isEditable={isEditable}/>
+            <SurveyAnswerCard surveyAnswers={surveyAnswers}/>
           </Grid>
         </Container>
       </section>
@@ -34,4 +34,4 @@ const SurveyPage = ({ firstname, isEditable }) => {
   );
 };
 
-export default SurveyPage;
+export default ViewSurveyPage;

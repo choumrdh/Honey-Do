@@ -18,7 +18,7 @@
       {
         "id": 2,
         "type": "dropdown",
-        "label": "gender",
+        "label": "Gender",
         "value": ["Male", "Female", "Prefer No Answer"]
       },
       {
@@ -31,6 +31,39 @@
         "id": 4,
         "type": "textfield",
         "label": "Notes",
+        "value": []
+      }
+    ]
+  },{
+    "id":2,
+    "title":"What is your favorite soda brand?",
+    "questions":[
+      {
+        "id": 0,
+        "type": "input",
+        "label": "Full-Name",
+        "value": []
+      },
+      {
+        "id": 1,
+        "type": "input",
+        "label": "Email Address",
+        "value": []
+      }, {
+        "id": 2,
+        "type": "dropdown",
+        "label": "age",
+        "value": ["18-20", "21-40", "41-60", "60+"]
+      },{
+        "id": 3,
+        "type": "checkbox.single",
+        "label": "Pick one for brand",
+        "value": ["Coca-cola", "Pepsi", "Mountain Dew", "Sprite", "Dr.Pepper"]
+      },
+      {
+        "id": 4,
+        "type": "textfield",
+        "label": "Comments",
         "value": []
       }
     ]

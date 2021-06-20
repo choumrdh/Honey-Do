@@ -2,9 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
-import SurveryForm2 from "../components/Survey/surveyFormv2";
 import DisplaySurveyCard from "../components/Survey/DisplaySurveyCard";
 const useStyles = makeStyles((theme) => ({
   root: {

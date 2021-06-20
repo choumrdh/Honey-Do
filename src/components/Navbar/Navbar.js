@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import LockIcon from "@material-ui/icons/Lock";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import Link from '@material-ui/core/Link';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +41,7 @@ export default function Navbar({ firstname }) {
           </IconButton>
           <BiListCheck style={{ fontSize: 40 }} />
           <Typography variant="h6" className={classes.title}>
-            RoomBud
+            <Link href="/home">RoomBud</Link>
           </Typography>
           <div>
             Hello {firstname}

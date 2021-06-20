@@ -76,7 +76,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
     const surveyAnswers =
       JSON.parse(window.localStorage.getItem("surveyAnswer")) || {};
     const currentSurveyAnswers = surveyAnswers[surveyId] || [];
-    console.log(surveyAnswers, currentSurveyAnswers);
+    // console.log(surveyAnswers, currentSurveyAnswers);
     currentSurveyAnswers.push(formValue);
     surveyAnswers[surveyId] = currentSurveyAnswers;
     window.localStorage.setItem("surveyAnswer", JSON.stringify(surveyAnswers));
@@ -86,14 +86,13 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
-  console.log(surveyId, surveyToRender);
+  //   console.log(surveyId, surveyToRender);
   return (
     <div>
       {!isEdit && (
-        <form className={classes.form} container>
+        <form className={classes.form}>
           <Typography variant="h6" gutterBottom>
             Survey
           </Typography>
@@ -122,7 +121,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                   return (
                     <Grid item xs={12} sm={12}>
                       <FormControl className={classes.formControl}>
-                        <InputLabel>Gender</InputLabel>
+                        <InputLabel>{question.label}</InputLabel>
                         <Select
                           name={question.label}
                           id={question.label}
@@ -147,7 +146,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                     <Grid item xs={12}>
                       <FormControl className={classes.formControl}>
                         <FormLabel component="legend">
-                          Pick one ice cream flavor
+                          {question.label}
                         </FormLabel>
                         <FormGroup>
                           {question.value.map((option, index) => (
@@ -205,15 +204,12 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                 Thank you for submitting your answer
               </Alert>
             </Snackbar>
-            <Button type="button" variant="contained" color="secondary">
-              Clear
-            </Button>
           </Grid>
         </form>
       )}
       {isEdit && (
         <DragDropContext onDragEnd={onDragEnd}>
-          <form className={classes.form} container>
+          <form className={classes.form}>
             <Typography variant="h6" gutterBottom>
               Survey
             </Typography>
@@ -313,7 +309,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                               return (
                                 <Grid item xs={12} sm={12}>
                                   <TextField
-                                  disabled
+                                    disabled
                                     required
                                     id={question.id}
                                     label={question.label}
@@ -340,9 +336,17 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
             </div>
             <Grid>
               <br></br>
-              <Button type="button" variant="outlined" color="primary" onClick={() => {
-                  window.localStorage.setItem('default', JSON.stringify(allSurveys));
-              }}>
+              <Button
+                type="button"
+                variant="outlined"
+                color="primary"
+                onClick={() => {
+                  window.localStorage.setItem(
+                    "default",
+                    JSON.stringify(allSurveys)
+                  );
+                }}
+              >
                 <a href="/home">Update</a>
               </Button>
             </Grid>

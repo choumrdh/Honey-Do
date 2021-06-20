@@ -19,35 +19,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DisplaySurveyCard = ({ surveys }) => {
+const SurveyAnswerCard = ({surveyAnswers}) => {
+    console.log("answer card", surveyAnswers)
   const classes = useStyles();
+  const {id, } = surveyAnswers
   return (
     <div className={classes.root}>
-      {surveys.map((survey) => {
-        const { id, title } = survey;
+      {/* {surveyAnswers.map((answer) => {
+        
         return (
           <Card className={classes.Card}>
             <CardContent>
               <Typography>{title}</Typography>
               <h6>Survey ID: {id}</h6>
+              <Typography>
+
+              </Typography>
             </CardContent>
 
-            <CardActions className={classes.CardActions}>
-              <Button size="small">
-                <a href="/view">View</a>
-              </Button>
-              <Button size="small">
-                <a href="/add">Add</a>
-              </Button>
-              <Button size="small">
-                <a href="/edit">Edit</a>
-              </Button>
-            </CardActions>
+            
           </Card>
         );
-      })}
+      })} */}
     </div>
   );
 };
 
-export default DisplaySurveyCard;
+export default SurveyAnswerCard;

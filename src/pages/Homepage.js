@@ -31,10 +31,9 @@ const HomePage = ({ todos, setTodos, firstname}) => {
         <Container className="todo-app">
           <Grid container direction="row" justify="center" alignItems="center">
             
-            {/* <Grid xs={12} sm={8} md={8} lg={8} spacing={2}>
+            <Grid xs={12} sm={8} md={8} lg={8} spacing={2}>
               <TodoList todos={todos} setTodos={setTodos} />
-            </Grid> */}
-            <SurveryForm2 surveyId={1}/>
+            </Grid>
           </Grid>
         </Container>
         

@@ -10,6 +10,7 @@ import AccountPage from "./pages/Accountpage";
 import EditSurveyPage from "./pages/EditSurveyPage";
 import Homepagev2 from "./pages/Homepagev2";
 import defaultSurvey from "./components/Survey/pre-madeSurvey.json";
+import ViewSurveyPage from "./pages/ViewSurveyPage";
 
 function App() {
   const storage = window.localStorage;
@@ -19,22 +20,23 @@ function App() {
   const [lastname, setLastname] = useState(
     storage.getItem("lastName") || "Chou"
   );
-  const savedTodoList = storage.getItem("todos");
-  const [todos, setTodos] = useState(
-    savedTodoList ? JSON.parse(savedTodoList) : []
-  );
+  // const savedTodoList = storage.getItem("todos");
+  // const [todos, setTodos] = useState(
+  //   savedTodoList ? JSON.parse(savedTodoList) : []
+  // );
 
   if(!storage.getItem("default")) {
     storage.setItem("default", JSON.stringify(defaultSurvey));
   }
   const getDefault = JSON.parse(storage.getItem("default"));
+  const surveyAnswers = JSON.parse(storage.getItem("surveyAnswer"))
 
   return (
     <>
       <Router>
         <Switch>
           <Route exact path="/" component={Login} />
-          {/* <Route exact path="/view" render={() => <ViewSurveyPage />} /> */}
+          <Route exact path="/view" render={() => <ViewSurveyPage firstname={firstname} surveyAnswers={surveyAnswers} getDefault={getDefault}/>} />
           <Route exact path="/add" render={() => <EditSurveyPage firstname={firstname} isEditable={false} />} />
           <Route exact path="/edit" render={() => <EditSurveyPage firstname={firstname} isEditable={true} />} />
           {/* <Route
