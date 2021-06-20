@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./App.css";
 import Copyright from "./components/Copyright/Copyright";
-import Box from "@material-ui/core/Box"; 
+import Box from "@material-ui/core/Box";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
-import HomePage from "./pages/Homepage";
+// import HomePage from "./pages/Homepage";
 import AccountPage from "./pages/Accountpage";
-import viewSurveyPage from "./pages/viewSurveyPage";
+// import viewSurveyPage from "./pages/viewSurveyPage";
+import Homepagev2 from "./pages/Homepagev2";
 import defaultSurvey from "./components/Survey/pre-madeSurvey.json";
 
 function App() {
@@ -18,42 +19,50 @@ function App() {
   const [lastname, setLastname] = useState(
     storage.getItem("lastName") || "Chou"
   );
-  const savedTodoList = storage.getItem('todos')
-  const [todos, setTodos] = useState(savedTodoList ? JSON.parse(savedTodoList) : []);
+  const savedTodoList = storage.getItem("todos");
+  const [todos, setTodos] = useState(
+    savedTodoList ? JSON.parse(savedTodoList) : []
+  );
   // console.log('todo:app', todos);
-
   storage.setItem("default", JSON.stringify(defaultSurvey));
+  const getDefault = JSON.parse(storage.getItem("default"));
 
-  
   return (
     <>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/survey" render={()=><viewSurveyPage/>}/>
-        <Route
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/survey" render={() => <viewSurveyPage />} />
+          {/* <Route
           exact
           path="/home"
           render={() => <HomePage todos={todos} setTodos={setTodos} firstname={firstname}/>}
-        />
-        <Route
-          exact
-          path="/account"
-          render={() => (
-            <AccountPage
-              firstname={firstname}
-              setFirstname={setFirstname}
-              lastname={lastname}
-              setLastname={setLastname}
-            />
-          )}
-        />
-      </Switch>
-    </Router>
-       <Box mt={8}>
-       <Copyright />
-     </Box>
-     </>
+        /> */}
+          <Route
+            exact
+            path="/home"
+            render={() => (
+              <Homepagev2 firstname={firstname} getDefault={getDefault} />
+            )}
+          />
+          <Route
+            exact
+            path="/account"
+            render={() => (
+              <AccountPage
+                firstname={firstname}
+                setFirstname={setFirstname}
+                lastname={lastname}
+                setLastname={setLastname}
+              />
+            )}
+          />
+        </Switch>
+      </Router>
+      <Box mt={8}>
+        <Copyright />
+      </Box>
+    </>
   );
 }
 
