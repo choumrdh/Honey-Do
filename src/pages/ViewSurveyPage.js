@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ViewSurveyPage = ({ firstname, surveyAnswers, match: { params } }) => {
+const ViewSurveyPage = ({ firstname, surveyAnswers, getDefault, match: { params } }) => {
   const { surveyId } = params;
   const classes = useStyles();
 
@@ -26,7 +26,7 @@ const ViewSurveyPage = ({ firstname, surveyAnswers, match: { params } }) => {
 
         <Container>
           <Grid container direction="row" justify="center" alignItems="center">
-            <SurveyAnswerCard surveyId={surveyId} surveyAnswers={surveyAnswers[surveyId]} />
+            <SurveyAnswerCard surveyId={surveyId} surveyAnswers={surveyAnswers[surveyId]} getDefault={getDefault[surveyId]}/>
           </Grid>
         </Container>
       </section>
