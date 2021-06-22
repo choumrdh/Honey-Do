@@ -34,11 +34,16 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
       flexDirection: "column",
       alignItems: "center",
     },
+    Button:{
+      margin: theme.spacing(2),
+      padding: theme.spacing(1),
+    }
   }));
+  const classes = useStyles();
   const [isEdit, setIsEdit] = useState(isEditable);
   const [formValue, setFormValue] = useState({});
   const [open, setOpen] = useState(false);
-  const classes = useStyles();
+  
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
@@ -184,7 +189,6 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                         multiline
                         fullWidth
                         rows={5}
-
                         variant="outlined"
                         onChange={(event) => textHandler(event, question.id)}
                       />
@@ -242,7 +246,6 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                                     label={question.label}
                                     fullWidth
                                   />
-          
                                 </Grid>
                               );
                               break;
@@ -316,7 +319,6 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                                     multiline
                                     fullWidth
                                     rows={5}
-                        
                                     variant="outlined"
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}
@@ -334,7 +336,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                 )}
               </Droppable>
             </div>
-            <Grid>
+            <Grid className={classes.Button}>
               <br></br>
               <Button
                 type="button"
