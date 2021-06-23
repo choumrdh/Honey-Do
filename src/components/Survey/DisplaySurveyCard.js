@@ -16,7 +16,22 @@ const useStyles = makeStyles((theme) => ({
   },
   Card: {
     margin: theme.spacing(2),
+    backgroundColor:"#EFEFF0",
   },
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  }
 }));
 
 const DisplaySurveyCard = ({ surveys }) => {
@@ -28,7 +43,7 @@ const DisplaySurveyCard = ({ surveys }) => {
         return (
           <Card className={classes.Card} key={index}>
             <CardContent>
-              <Typography>{title}</Typography>
+              <Typography className={classes.Typography}>Survey Title: {title}</Typography>
               <h6>Survey ID: {id+1}</h6>
             </CardContent>
 

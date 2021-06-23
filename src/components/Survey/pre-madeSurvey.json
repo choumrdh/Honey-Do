@@ -12,14 +12,14 @@
       {
         "id": 1,
         "type": "input",
-        "label": "Email Address",
+        "label": "Email",
         "value": []
       },
       {
         "id": 2,
         "type": "dropdown",
         "label": "Gender",
-        "value": ["Male", "Female", "Prefer No Answer"]
+        "value": ["Male", "Female", "Prefer Not Answer"]
       },
       {
         "id": 3,
@@ -47,12 +47,12 @@
       {
         "id": 1,
         "type": "input",
-        "label": "Email Address",
+        "label": "Email",
         "value": []
       }, {
         "id": 2,
         "type": "dropdown",
-        "label": "age",
+        "label": "Age",
         "value": ["18-20", "21-40", "41-60", "60+"]
       },{
         "id": 3,

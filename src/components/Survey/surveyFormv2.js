@@ -201,9 +201,9 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
           <br></br>
           <Grid>
             <Button variant="contained" color="primary" onClick={submitHandler}>
-              Submit
+              <a href="/home">Submit</a>
             </Button>
-            <Snackbar open={open} autoHideDuration={6000} onClose={closeHandle}>
+            <Snackbar open={open} autoHideDuration={3000} onClose={closeHandle}>
               <Alert onClose={closeHandle} severity="success">
                 Thank you for submitting your answer
               </Alert>
