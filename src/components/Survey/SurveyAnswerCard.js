@@ -18,11 +18,16 @@ const useStyles = makeStyles((theme) => ({
   Typography:{
     margin:theme.spacing(2),
     textAlign:"center",
-    // display: 'flex',
-    color:"#0e1c36"
-   
+    display: 'flex',
+    color:"#0e1c36", 
+    marginTop: "0",
+    minHeight: "auto",
+    fontWeight: "300",
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    marginBottom: "3px",
+    textDecoration: "none"
     
-  }
+  },
  
 }));
 
@@ -34,7 +39,7 @@ const SurveyAnswerCard = ({ surveyAnswers, getDefault }) => {
       {surveyAnswers.map((answer) => {
         return (
           <Grid xs={12} sm={12} lg={12}>
-            <Paper elevation={3} className={classes.Paper}>
+            <Paper elevation={3} className={classes.Paper} >
             <Typography gutterBottom variant="h6" className={classes.Typography}><b>{getDefault.title}</b></Typography>
             <Typography variant="h6" gutterBottom className={classes.Typography}>
               <i>{getDefault.questions[0].label}:</i> {answer[getDefault.questions[0].id]}
