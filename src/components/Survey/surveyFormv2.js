@@ -34,16 +34,17 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
       flexDirection: "column",
       alignItems: "center",
     },
-    Button:{
+    Button: {
       margin: theme.spacing(2),
       padding: theme.spacing(1),
-    }
+      justifyContent: "space-around"
+    },
   }));
   const classes = useStyles();
   const [isEdit, setIsEdit] = useState(isEditable);
   const [formValue, setFormValue] = useState({});
   const [open, setOpen] = useState(false);
-  
+
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
@@ -201,7 +202,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
           <br></br>
           <Grid>
             <Button variant="contained" color="primary" onClick={submitHandler}>
-              <a href="/home">Submit</a>
+              <a href={"/view/"+surveyId}>Submit</a>
             </Button>
             <Snackbar open={open} autoHideDuration={3000} onClose={closeHandle}>
               <Alert onClose={closeHandle} severity="success">
@@ -238,7 +239,6 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                                     {...provided.dragHandleProps}
                                     ref={provided.innerRef}
                                     key={`${index}`}
-                                    key={`${index}`}
                                     required
                                     disabled
                                     id={`${question.id}`}
@@ -262,7 +262,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                                     <InputLabel>{question.label}</InputLabel>
                                     <Select
                                       name={question.label}
-                                      id={question.label}
+                                      id={`${question.id}`}
                                       autoWidth
                                       disabled
                                     >
@@ -294,7 +294,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                                         <FormControlLabel
                                           control={
                                             <Checkbox
-                                              key={index}
+                                              key={`${index}`}
                                               name={option}
                                               disabled
                                               color="primary"
@@ -314,7 +314,7 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                                   <TextField
                                     disabled
                                     required
-                                    id={question.id}
+                                    id={`${question.id}`}
                                     label={question.label}
                                     multiline
                                     fullWidth
@@ -350,6 +350,9 @@ const SurveyFormv2 = ({ surveyId, isEditable }) => {
                 }}
               >
                 <a href="/home">Update Order</a>
+              </Button>
+              <Button type="button" variant="outlined" color="secondary">
+                <a href={"/view/" + surveyId}>View Survey</a>
               </Button>
             </Grid>
           </form>
