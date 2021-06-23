@@ -10,6 +10,7 @@ import AccountPage from "./pages/Accountpage";
 import EditSurveyPage from "./pages/EditSurveyPage";
 import Homepagev2 from "./pages/Homepagev2";
 import defaultSurvey from "./components/Survey/pre-madeSurvey.json";
+import defaultAnswer from "./components/Survey/preSurvey.json"
 import ViewSurveyPage from "./pages/ViewSurveyPage";
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
 
   if(!storage.getItem("default")) {
     storage.setItem("default", JSON.stringify(defaultSurvey));
+  }
+  if(!storage.getItem("surveyAnswer")) {
+    storage.setItem("surveyAnswer", JSON.stringify(defaultAnswer));
   }
   const getDefault = JSON.parse(storage.getItem("default"));
   const surveyAnswers = JSON.parse(storage.getItem("surveyAnswer"))

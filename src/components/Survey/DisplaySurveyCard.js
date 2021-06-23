@@ -29,7 +29,7 @@ const DisplaySurveyCard = ({ surveys }) => {
           <Card className={classes.Card} key={index}>
             <CardContent>
               <Typography>{title}</Typography>
-              <h6>Survey ID: {id}</h6>
+              <h6>Survey ID: {id+1}</h6>
             </CardContent>
 
             <CardActions className={classes.CardActions}>
